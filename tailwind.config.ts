@@ -5,9 +5,12 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite/**/*.js",
   ],
+
   theme: {
     extend: {
+      darkMode: "class",
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -16,8 +19,9 @@ const config: Config = {
       gridTemplateColumns: {
         gallery: "repeat(auto-fit, minmax(250px, 1fr))",
       },
+      height: { sectionHeight: "calc(100vh - var(--navbarHeight))" },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };
 export default config;

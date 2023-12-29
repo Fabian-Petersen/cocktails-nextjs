@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import AppContextProvider from "./lib/useAppContext";
+
+// $ Revalidate the page every 1 hour to get the latest data from the API
+// $ This will render new pictures on the homepage if there are any to display
+export const revalidate = 3600; // 1 hours
 
 export const metadata: Metadata = {
   title: "Cocktails Magic ",
@@ -13,8 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">
-        <main className="max-w-6xl mx-auto">{children}</main>
+      <body>
+        <AppContextProvider>
+          <Navbar />
+          <main>{children}</main>
+        </AppContextProvider>
       </body>
     </html>
   );

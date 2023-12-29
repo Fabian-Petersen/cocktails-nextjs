@@ -13,7 +13,7 @@ export default async function fetchImages(
     });
 
     if (!response.ok) {
-      throw new Error("Images Not Received\n");
+      throw new Error("Failed to Load Images\n");
     }
 
     const ImagesResults = await response.json();
@@ -26,7 +26,7 @@ export default async function fetchImages(
 
     return parsedData;
   } catch (error) {
-    console.error(error);
+    console.log(error);
 
     if (error instanceof Error) {
       console.error(error.stack);
